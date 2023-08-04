@@ -1,0 +1,34 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: mumbai
+    source:
+      address: "0xFb196E0580317100EaE8b08cFE3A6500a2039358"
+      abi: Contract
+      startBlock: 38122578
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - BeaconUpgraded
+        - Upgraded
+        - Minted
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+        - event: Mint(indexed address,indexed uint256,string)
+          handler: handleMintEvent
+
+      file: ./src/contract.ts
