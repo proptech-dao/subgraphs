@@ -26,7 +26,7 @@ export function handleMintEvent(event: MintEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   
-    entity.to = event.params.to
+    entity.owner = event.params.to
     entity.tokenId = event.params.tokenId
     entity.uri = event.params.uri
     entity.transactionHash = event.transaction.hash
