@@ -71,6 +71,7 @@ type NFTUnlisted @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  
 }
 
 
@@ -80,7 +81,7 @@ type NFTInMarket @entity(immutable: false) {
   tokenId: BigInt! # uint256, token ID from HCT contract.
   paymentToken: Bytes! # address, ERC20 token used for payment.
   price: BigInt! # uint256, will be filled once the NFT is listed.
-  buyer: Bytes! # address, will be filled if the NFT was bought.
-  transactionHash: Bytes!
+  buyer: Bytes # address, will be filled if the NFT was bought.
+  transactionHash: Bytes
 }
 
