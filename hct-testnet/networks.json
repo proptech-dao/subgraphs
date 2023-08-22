@@ -3,6 +3,9 @@
     "Contract": {
       "address": "0xFb196E0580317100EaE8b08cFE3A6500a2039358",
       "startBlock": 38122578
+    },
+    "NFTMarketplace": {
+      "address": "0x13B2b608ad59DA0fA1DdfFc6689bEe265E916Fa8"
     }
   }
 }

@@ -1,6 +1,9 @@
 {
   "name": "hct-testnet",
   "license": "UNLICENSED",
+  "engines": {
+    "node": "^16.0.0"
+  },
   "scripts": {
     "auth": "graph auth",
     "codegen": "graph codegen",
