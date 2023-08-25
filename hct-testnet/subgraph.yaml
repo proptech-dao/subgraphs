@@ -37,7 +37,7 @@ dataSources:
     name: NFTMarketplace
     network: mumbai
     source:
-      address: "0x13B2b608ad59DA0fA1DdfFc6689bEe265E916Fa8"
+      address: "0x667cc9dAc931f2Cb92a332ee3344b2bfdd38eEd4"
       abi: NFTMarketplace
       startBlock: 39220981
     mapping:
@@ -52,10 +52,10 @@ dataSources:
         - name: NFTMarketplace
           file: ./abis/NFTMarketplace.json
       eventHandlers:
-        - event: NFTListed(indexed address,indexed uint256,uint256,address)
+        - event: NFTListed(indexed address,indexed address,indexed uint256,uint256,address)
           handler: handleNFTListed
-        - event: NFTPurchased(indexed address,indexed uint256,address,uint256)
+        - event: NFTPurchased(indexed address,indexed address,indexed uint256,address,uint256)
           handler: handleNFTPurchased
-        - event: NFTUnlisted(indexed address,indexed uint256)
+        - event: NFTUnlisted(indexed address,indexed address,indexed uint256)
           handler: handleNFTUnlisted
       file: ./src/nft-marketplace.ts

@@ -40,11 +40,10 @@ type NFTRaw @entity(immutable: false) {
   transactionHash: Bytes!
 }
 
-
-
 type NFTListed @entity(immutable: true) {
   id: Bytes!
   nftAddress: Bytes! # address
+  seller: Bytes!
   tokenId: BigInt! # uint256
   price: BigInt! # uint256
   paymentToken: Bytes! # address
@@ -56,6 +55,7 @@ type NFTListed @entity(immutable: true) {
 type NFTPurchased @entity(immutable: true) {
   id: Bytes!
   nftAddress: Bytes! # address
+  seller: Bytes! # address
   tokenId: BigInt! # uint256
   buyer: Bytes! # address
   price: BigInt! # uint256
@@ -67,17 +67,18 @@ type NFTPurchased @entity(immutable: true) {
 type NFTUnlisted @entity(immutable: true) {
   id: Bytes!
   nftAddress: Bytes! # address
+  seller: Bytes! # address
   tokenId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
-  
 }
 
 
 type NFTInMarket @entity(immutable: false) {
   id: Bytes!
   nftAddress: Bytes! # address,
+  seller: Bytes! # address,
   tokenId: BigInt! # uint256, token ID from HCT contract.
   paymentToken: Bytes! # address, ERC20 token used for payment.
   price: BigInt! # uint256, will be filled once the NFT is listed.

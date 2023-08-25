@@ -7,6 +7,7 @@ import {
 } from "../generated/NFTMarketplace/NFTMarketplace"
 
 export function createNFTListedEvent(
+  seller: Address,
   nftAddress: Address,
   tokenId: BigInt,
   price: BigInt,
@@ -15,6 +16,14 @@ export function createNFTListedEvent(
   let nftListedEvent = changetype<NFTListed>(newMockEvent())
 
   nftListedEvent.parameters = new Array()
+
+
+  nftListedEvent.parameters.push(
+    new ethereum.EventParam(
+      "seller",
+      ethereum.Value.fromAddress(seller)
+    )
+  )
 
   nftListedEvent.parameters.push(
     new ethereum.EventParam(
@@ -42,6 +51,7 @@ export function createNFTListedEvent(
 }
 
 export function createNFTPurchasedEvent(
+  seller: Address,
   nftAddress: Address,
   tokenId: BigInt,
   buyer: Address,
@@ -51,6 +61,13 @@ export function createNFTPurchasedEvent(
 
   nftPurchasedEvent.parameters = new Array()
 
+
+  nftPurchasedEvent.parameters.push(
+    new ethereum.EventParam(
+      "seller ",
+      ethereum.Value.fromAddress(seller)
+    )
+  )
   nftPurchasedEvent.parameters.push(
     new ethereum.EventParam(
       "nftAddress",
@@ -74,12 +91,20 @@ export function createNFTPurchasedEvent(
 }
 
 export function createNFTUnlistedEvent(
+  seller: Address,
   nftAddress: Address,
   tokenId: BigInt
 ): NFTUnlisted {
   let nftUnlistedEvent = changetype<NFTUnlisted>(newMockEvent())
 
   nftUnlistedEvent.parameters = new Array()
+
+  nftUnlistedEvent.parameters.push(
+    new ethereum.EventParam(
+      "seller",
+      ethereum.Value.fromAddress(seller)
+    )
+  )
 
   nftUnlistedEvent.parameters.push(
     new ethereum.EventParam(

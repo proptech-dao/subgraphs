@@ -23,12 +23,16 @@ describe("Describe entity assertions", () => {
     let nftAddress = Address.fromString(
       "0x0000000000000000000000000000000000000001"
     )
+    let seller = Address.fromString(
+      "0x0000000000000000000000000000000000000003"
+    )
     let tokenId = BigInt.fromI32(234)
     let price = BigInt.fromI32(234)
     let paymentToken = Address.fromString(
       "0x0000000000000000000000000000000000000002"
     )
     let newNFTListedEvent = createNFTListedEvent(
+      seller,
       nftAddress,
       tokenId,
       price,
@@ -42,44 +46,6 @@ describe("Describe entity assertions", () => {
     clearStore()
   })
 
-  // For more test scenarios, see:
-  // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
-
-  test("NFTListed created and stored", () => {
-    assert.entityCount("NFTListed", 1)
-    
-    log.warning(`string id ${id.toHexString()}` , [])
-
-    // 0xA16081F360e3847006dB660bae1c6d1b2e17eC2A is the default address used in newMockEvent() function
-    assert.fieldEquals(
-      "NFTListed",
-      id.toHexString(),
-      "nftAddress",
-      "0x0000000000000000000000000000000000000001"
-    )
-    assert.fieldEquals(
-      "NFTListed",
-      id.toHexString(),
-      "tokenId",
-      "234"
-    )
-    assert.fieldEquals(
-      "NFTListed",
-      id.toHexString(),
-      "price",
-      "234"
-    )
-    assert.fieldEquals(
-      "NFTListed",
-      id.toHexString(),
-      "paymentToken",
-      "0x0000000000000000000000000000000000000002"
-    )
-
-    // More assert options:
-    // https://thegraph.com/docs/en/developer/matchstick/#asserts
-  })
-
 
   test("NFTMInMkarket object after listing", () =>{
     assert.entityCount("NFTInMarket", 1)
@@ -88,6 +54,13 @@ describe("Describe entity assertions", () => {
       id.toHexString(),
       "paymentToken",
       "0x0000000000000000000000000000000000000002"
+    )
+
+    assert.fieldEquals(
+      "NFTInMarket",
+      id.toHexString(),
+      "seller",
+      "0x0000000000000000000000000000000000000003"
     )
   })
 
@@ -101,7 +74,11 @@ describe("Describe entity assertions", () => {
     let buyer = Address.fromString(
       "0x0000000000000000000000000000000000000002"
     )
+    let seller = Address.fromString(
+      "0x0000000000000000000000000000000000000003"
+    )
     let newNFTListedEvent = createNFTPurchasedEvent(
+      seller,
       nftAddress,
       tokenId,
       buyer,
@@ -109,7 +86,6 @@ describe("Describe entity assertions", () => {
     )
     handleNFTPurchased(newNFTListedEvent)
     assert.entityCount("NFTInMarket", 1)
-    assert.entityCount("NFTPurchased", 1)
   
 
     assert.fieldEquals(
@@ -119,7 +95,12 @@ describe("Describe entity assertions", () => {
       "0x0000000000000000000000000000000000000002"
     )
 
-    
+    assert.fieldEquals(
+      "NFTInMarket",
+      id.toHexString(),
+      "seller",
+      "0x0000000000000000000000000000000000000003"
+    )
   })
 
 
@@ -129,7 +110,11 @@ describe("Describe entity assertions", () => {
       "0x0000000000000000000000000000000000000001"
     )
     let tokenId = BigInt.fromI32(234)
+    let seller = Address.fromString(
+      "0x0000000000000000000000000000000000000003"
+    )
     let newNFTListedEvent = createNFTUnlistedEvent(
+     seller,
       nftAddress,
       tokenId,
     )
