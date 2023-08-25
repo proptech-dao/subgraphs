@@ -37,7 +37,7 @@ dataSources:
     name: NFTMarketplace
     network: mumbai
     source:
-      address: "0x667cc9dAc931f2Cb92a332ee3344b2bfdd38eEd4"
+      address: "0xDFfEAf95489774437fcAEDA897f6595Bd49eF859"
       abi: NFTMarketplace
       startBlock: 39220981
     mapping:
