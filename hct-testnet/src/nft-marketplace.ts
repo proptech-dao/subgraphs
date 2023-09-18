@@ -4,32 +4,32 @@ import {
   NFTPurchased as NFTPurchasedEvent,
   NFTUnlisted as NFTUnlistedEvent
 } from "../generated/NFTMarketplace/NFTMarketplace"
-import { NFTInMarket, NFTListed, NFTPurchased, NFTUnlisted } from "../generated/schema"
+import { NFTInMarket } from "../generated/schema"
 import { store } from '@graphprotocol/graph-ts'
 
 export function handleNFTListed(event: NFTListedEvent): void {
 
-  let nftListed = new NFTInMarket(
+  let nftIntMarket = new NFTInMarket(
     Bytes.fromByteArray(Bytes.fromBigInt(event.params.tokenId))  
   )
 
-  nftListed.tokenId = event.params.tokenId
-  nftListed.nftAddress = event.params.nftAddress
-  nftListed.price = event.params.price
-  nftListed.paymentToken = event.params.paymentToken
-  nftListed.seller = event.params.seller
+  nftIntMarket.tokenId = event.params.tokenId
+  nftIntMarket.nftAddress = event.params.nftAddress
+  nftIntMarket.price = event.params.price
+  nftIntMarket.paymentToken = event.params.paymentToken
+  nftIntMarket.seller = event.params.seller
 
-  nftListed.save()
+  nftIntMarket.save()
 }
 
 export function handleNFTPurchased(event: NFTPurchasedEvent): void {
-  let nftListed =  NFTInMarket.load(
+  let nftIntMarket =  NFTInMarket.load(
     Bytes.fromByteArray(Bytes.fromBigInt(event.params.tokenId))  
   )
 
-  if(nftListed){
-    nftListed.buyer = event.params.buyer
-    nftListed.save()
+  if(nftIntMarket){
+    nftIntMarket.buyer = event.params.buyer
+    nftIntMarket.save()
   }
 }
 

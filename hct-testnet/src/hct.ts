@@ -33,6 +33,7 @@ export function handleMintEvent(event: MintEvent): void {
     entity.save()
     rawNftEntity.save()
 }
+
 export function handleTransferEvent(event: TransferEvent): void {
   const nftRaw = NFTRaw.load(
     Bytes.fromByteArray(Bytes.fromBigInt(event.params.tokenId))  

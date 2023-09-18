@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0xfC8dbC3FB0201A68d4191DDc7489EB60a8bAfBBF"
       abi: Hct
-      startBlock: 38122578
+      startBlock: 39220791
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -37,9 +37,9 @@ dataSources:
     name: NFTMarketplace
     network: mumbai
     source:
-      address: "0xDFfEAf95489774437fcAEDA897f6595Bd49eF859"
+      address: "0x71e10316F9a811474a32Df9aa65F4Ab204b3571A"
       abi: NFTMarketplace
-      startBlock: 39220981
+      startBlock: 39396889
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

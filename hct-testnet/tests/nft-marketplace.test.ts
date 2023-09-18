@@ -7,11 +7,8 @@ import {
   afterAll
 } from "matchstick-as/assembly/index"
 import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
-import { NFTListed } from "../generated/schema"
-import { NFTListed as NFTListedEvent } from "../generated/NFTMarketplace/NFTMarketplace"
 import { handleNFTListed, handleNFTPurchased, handleNFTUnlisted } from "../src/nft-marketplace"
 import { createNFTListedEvent, createNFTPurchasedEvent, createNFTUnlistedEvent } from "./nft-marketplace-utils"
-import { log } from "matchstick-as/assembly/log";
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
